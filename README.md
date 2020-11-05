@@ -1,5 +1,5 @@
-# iSlime
-A Slime client in JS for the browser.
+# Wilfred
+"Web LIsp Front EnD" is A Slime client in JS for the browser. Its name is an echo of "Fred" the Emacs subset in Macintosh Common Lisp.
 
 Will talk to Swank running in a Common Lisp.
 
