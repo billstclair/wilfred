@@ -2,9 +2,9 @@
 
 My notes on learning ClojureScript.
 
-Java Development Kit (JDK): https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
-Getting started with Clojure: https://clojure.org/guides/getting_started
-Project manager (not necessary for ClojureScript): https://leiningen.org/
+* Java Development Kit (JDK): https://www.oracle.com/java/technologies/javase-jdk15-downloads.html
+* Getting started with Clojure: https://clojure.org/guides/getting_started
+* Project manager (not necessary for ClojureScript): https://leiningen.org/
 
 From "lein help tutorial":
 
