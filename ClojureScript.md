@@ -8,9 +8,9 @@ My notes on learning ClojureScript.
 
 From "lein help tutorial":
 
-Leiningen is for automating Clojure projects without setting your hair
+"Leiningen is for automating Clojure projects without setting your hair
 on fire. If you experience your hair catching on fire or any other
 frustrations while following this tutorial, please
-[let us know](https://github.com/technomancy/leiningen/issues/new).
+[let us know](https://github.com/technomancy/leiningen/issues/new)."
 
 ClojureScript HOWTO: https://clojurescript.org/guides/quick-start

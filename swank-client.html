@@ -1,0 +1,1933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0050)https://quickref.common-lisp.net/swank-client.html -->
+<html><!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>The swank-client Reference Manual</title>
+
+<meta name="description" content="The swank-client Reference Manual, version 1.6.">
+<meta name="keywords" content="The swank-client Reference Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="https://quickref.common-lisp.net/swank-client.html#Top" rel="start" title="Top">
+<link href="https://quickref.common-lisp.net/swank-client.html#Indexes" rel="index" title="Indexes">
+<link href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="https://quickref.common-lisp.net/dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="./swank-client_files/document.css">
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">The swank-client Reference Manual</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Introduction-1" href="https://quickref.common-lisp.net/swank-client.html#Introduction">1 Introduction</a></li>
+  <li><a id="toc-Systems-1" href="https://quickref.common-lisp.net/swank-client.html#Systems">2 Systems</a>
+  <ul class="no-bullet">
+    <li><a id="toc-swank_002dclient" href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-system">2.1 <tt>swank-client</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Files-1" href="https://quickref.common-lisp.net/swank-client.html#Files">3 Files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lisp" href="https://quickref.common-lisp.net/swank-client.html#Lisp-files">3.1 Lisp</a>
+    <ul class="no-bullet">
+      <li><a id="toc-swank_002dclient_002easd" href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file">3.1.1 <tt>swank-client.asd</tt></a></li>
+      <li><a id="toc-swank_002dclient_002fpackage_002elisp" href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file">3.1.2 <tt>swank-client/package.lisp</tt></a></li>
+      <li><a id="toc-swank_002dclient_002fswank_002dclient_002elisp" href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file">3.1.3 <tt>swank-client/swank-client.lisp</tt></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Packages-1" href="https://quickref.common-lisp.net/swank-client.html#Packages">4 Packages</a>
+  <ul class="no-bullet">
+    <li><a id="toc-swank_002dclient-1" href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-package">4.1 <tt>swank-client</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Definitions-1" href="https://quickref.common-lisp.net/swank-client.html#Definitions">5 Definitions</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Exported-definitions-1" href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions">5.1 Exported definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Macros" href="https://quickref.common-lisp.net/swank-client.html#Exported-macros">5.1.1 Macros</a></li>
+      <li><a id="toc-Functions" href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">5.1.2 Functions</a></li>
+      <li><a id="toc-Conditions" href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions">5.1.3 Conditions</a></li>
+      <li><a id="toc-Classes" href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">5.1.4 Classes</a></li>
+    </ul></li>
+    <li><a id="toc-Internal-definitions-1" href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions">5.2 Internal definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Constants" href="https://quickref.common-lisp.net/swank-client.html#Internal-constants">5.2.1 Constants</a></li>
+      <li><a id="toc-Special-variables" href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">5.2.2 Special variables</a></li>
+      <li><a id="toc-Macros-1" href="https://quickref.common-lisp.net/swank-client.html#Internal-macros">5.2.3 Macros</a></li>
+      <li><a id="toc-Functions-1" href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">5.2.4 Functions</a></li>
+      <li><a id="toc-Generic-functions" href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">5.2.5 Generic functions</a></li>
+      <li><a id="toc-Types" href="https://quickref.common-lisp.net/swank-client.html#Internal-types">5.2.6 Types</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Indexes-1" href="https://quickref.common-lisp.net/swank-client.html#Indexes">Appendix A Indexes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Concepts" href="https://quickref.common-lisp.net/swank-client.html#Concept-index" rel="index">A.1 Concepts</a></li>
+    <li><a id="toc-Functions-2" href="https://quickref.common-lisp.net/swank-client.html#Function-index" rel="index">A.2 Functions</a></li>
+    <li><a id="toc-Variables" href="https://quickref.common-lisp.net/swank-client.html#Variable-index" rel="index">A.3 Variables</a></li>
+    <li><a id="toc-Data-types" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index" rel="index">A.4 Data types</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Introduction" accesskey="n" rel="next">Introduction</a>, Previous: <a href="https://quickref.common-lisp.net/dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="https://quickref.common-lisp.net/dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="The-swank_002dclient-Reference-Manual"></span><h1 class="top">The swank-client Reference Manual</h1>
+<p>This is the swank-client Reference Manual, version 1.6,
+generated automatically by Declt version 3.0 "Montgomery Scott"
+on Wed Nov 04 15:22:37 2020 GMT+0.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Introduction" accesskey="1">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What swank-client is all about
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Systems" accesskey="2">Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The systems documentation
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Files" accesskey="3">Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The files documentation
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Packages" accesskey="4">Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The packages documentation
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="5">Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The symbols documentation
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="6">Indexes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Concepts, functions, variables and data types
+</td></tr>
+</tbody></table>
+
+
+
+<hr>
+<span id="Introduction"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Systems" accesskey="n" rel="next">Systems</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Introduction-1"></span><h2 class="chapter">1 Introduction</h2>
+<h1>Swank Client</h1>
+<p>Swank Client is a Common Lisp implementation of the client side of the Swank
+debugging protocol used by <a href="https://en.wikipedia.org/wiki/SLIME">Slime</a>, a <a href="https://www.gnu.org/software/emacs">GNU
+Emacs</a> mode that implements an IDE for Lisp
+programming.  Emacs uses the Swank protocol to communicate with a Lisp system
+when a user runs the IDE, but the protocol is useful independently of Emacs
+because it allows a client to evaluate expressions on a remote Lisp that's
+running a Swank server.</p>
+<p>Swank Client is used by <a href="https://github.com/brown/swank-crew">Swank Crew</a> to
+implement a Slime IDE for developing distributed algorithms in Lisp.</p>
+<h2>The Swank Client API</h2>
+<h4>slime-connect host-name port &amp;optional connection-closed-hook</h4>
+<pre><code>Connects to the Swank server running on HOST-NAME that is listening on PORT.
+Returns a SWANK-CONNECTION if the connection attempt is successful.  Otherwise,
+returns NIL.  May signal SLIME-NETWORK-ERROR if the user has a Slime secret
+file and there are network problems sending its contents to the remote Swank
+server.  If provided, function CONNECTION-CLOSED-HOOK is called when the
+connection is closed.
+</code></pre>
+<h4>slime-close connection</h4>
+<pre><code>Closes CONNECTION to a Swank server.
+</code></pre>
+<h4>slime-eval sexp connection</h4>
+<pre><code>Sends SEXP over CONNECTION to a Swank server for evaluation and waits for the
+result.  When the result is received, it is returned.  Signals
+SLIME-NETWORK-ERROR when there are network problems sending SEXP.
+</code></pre>
+<h4>slime-eval-async sexp connection &amp;optional continuation</h4>
+<pre><code>Sends SEXP over CONNECTION to a Swank server for evaluation, then immediately
+returns.  Some time later, after the evaluation is finished, CONTINUATION is
+called with the result as argument.  Signals SLIME-NETWORK-ERROR when there are
+network problems sending SEXP.
+</code></pre>
+<h4>slime-migrate-evals old-connection new-connection</h4>
+<pre><code>Evaluates on NEW-CONNECTION all the work pending on a closed OLD-CONNECTION.
+Signals SLIME-NETWORK-ERROR when there are network problems.
+</code></pre>
+<h4>slime-pending-evals-p connection</h4>
+<pre><code>Returns T if there are outstanding evaluations pending on CONNECTION;
+otherwise, returns NIL.
+</code></pre>
+<h4>with-slime-connection (variable host-name port &amp;optional connection-closed-hook) &amp;body body</h4>
+<pre><code>Wraps BODY in a LET form where VARIABLE is bound to the value returned by
+(SLIME-CONNECT HOST-NAME PORT CONNECTION-CLOSED-HOOK).  Arranges for the Swank
+connection to be closed when control exits BODY.
+</code></pre>
+<p>For more information, see the documentation strings in
+<a href="https://github.com/brown/swank-client/blob/master/swank-client.lisp">swank-client.lisp</a>
+and the example code in
+<a href="https://github.com/brown/swank-client/blob/master/swank-client-test.lisp">swank-client-test.lisp</a>.</p>
+<h2>Swank Client example</h2>
+<h3>Starting a Swank server</h3>
+<p>The code below starts two Swank servers, one listening on port 4005 and the
+other listening on port 10000.</p>
+<pre><code>(load-quicklisp)
+(asdf:load-system 'com.google.base)
+(asdf:load-system 'swank)
+
+(defvar *emacs-port* 4005)
+(defvar *swank-client-port* 10000)
+
+(defun swank-thread ()
+  "Returns a thread that's acting as a Swank server."
+  (dolist (thread (sb-thread:list-all-threads))
+    (when (com.google.base:prefixp "Swank" (sb-thread:thread-name thread))
+      (return thread))))
+
+(defun wait-for-swank-thread ()
+  "Wait for the Swank server thread to exit."
+  (let ((swank-thread (swank-thread)))
+    (when swank-thread
+      (sb-thread:join-thread swank-thread))))
+
+(defun main ()
+  (setf swank:*configure-emacs-indentation* nil
+        swank::*enable-event-history* nil
+        swank:*log-events* t)
+  (swank:create-server :port *emacs-port* :dont-close t)
+  (swank:create-server :port *swank-client-port* :dont-close t)
+  (wait-for-swank-thread))
+
+(main)
+</code></pre>
+<h3>Using Swank Client to evaluate an expression on the server</h3>
+<p>Once the Swank servers are running, you can connect to the server on port 4005
+from Emacs using the command <code>M-x slime-connect</code>.  This connection is a
+normal Slime IDE session.  From the Slime IDE you can evaluate the following
+code, which creates a Swank Client connection to the server running on port
+10000 and remotely evaluates the expression <code>(cons 1 2)</code>.</p>
+<pre><code>(load-quicklisp)
+(asdf:load-system 'swank-client)
+
+(swank-client:with-slime-connection (connection "localhost" 10000)
+  (swank-client:slime-eval '(cons 1 2) connection))
+</code></pre>
+
+
+
+<hr>
+<span id="Systems"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Files" accesskey="n" rel="next">Files</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Introduction" accesskey="p" rel="prev">Introduction</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Systems-1"></span><h2 class="chapter">2 Systems</h2>
+<p>The main system appears first, followed by any subsystem dependency.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-system" accesskey="1">The swank-client system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+
+<hr>
+<span id="The-swank_002dclient-system"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Systems" accesskey="u" rel="up">Systems</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="swank_002dclient"></span><h3 class="section">2.1 <tt>swank-client</tt></h3>
+<span id="go-to-the-swank_002dclient-system"></span><span id="index-swank_002dclient"></span>
+<span id="index-System_002c-swank_002dclient"></span>
+<dl compact="compact">
+<dt><strong>Author</strong></dt>
+<dd><p>Robert Brown &lt;<a href="mailto:robert.brown@gmail.com">robert.brown@gmail.com</a>&gt;
+</p></dd>
+<dt><strong>License</strong></dt>
+<dd><p>GPL version 2.  See the copyright messages in individual files.
+</p></dd>
+<dt><strong>Description</strong></dt>
+<dd><p>Client side of the Swank protocol.
+</p></dd>
+<dt><strong>Long Description</strong></dt>
+<dd><p>An implementation of the client side of Slime’s Swank debugging protocol.
+</p></dd>
+<dt><strong>Version</strong></dt>
+<dd><p>1.6
+</p></dd>
+<dt><strong>Dependencies</strong></dt>
+<dd><ul>
+<li> <tt>bordeaux-threads</tt>
+</li><li> <tt>com.google.base</tt>
+</li><li> <tt>swank</tt>
+</li><li> <tt>usocket</tt>
+</li></ul>
+</dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_2024asd-file"><tt>swank-client.asd</tt></a> (file)
+</p></dd>
+<dt><strong>Components</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Files"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Packages" accesskey="n" rel="next">Packages</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Files-1"></span><h2 class="chapter">3 Files</h2>
+<p>Files are sorted by type and then listed depth-first from the systems
+components trees.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Lisp-files" accesskey="1">Lisp files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+
+<hr>
+<span id="Lisp-files"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Files" accesskey="u" rel="up">Files</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Lisp"></span><h3 class="section">3.1 Lisp</h3>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file" accesskey="1">The swank-client.asd file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file" accesskey="2">The swank-client/package.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file" accesskey="3">The swank-client/swank-client.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+<hr>
+<span id="The-swank_002dclient_2024asd-file"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file" accesskey="n" rel="next">The swank-client/package․lisp file</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Lisp-files" accesskey="p" rel="prev">Lisp files</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="swank_002dclient_002easd"></span><h4 class="subsection">3.1.1 <tt>swank-client.asd</tt></h4>
+<span id="go-to-the-swank_002dclient_2024asd-file"></span><span id="index-swank_002dclient_002easd"></span>
+<span id="index-Lisp-File_002c-swank_002dclient_002easd"></span>
+<span id="index-File_002c-Lisp_002c-swank_002dclient_002easd"></span>
+<dl compact="compact">
+<dt><strong>Location</strong></dt>
+<dd><p><tt>swank-client.asd</tt>
+</p></dd>
+<dt><strong>Systems</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient-system"><tt>swank-client</tt></a> (system)
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-swank_002dclient_002fpackage_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file" accesskey="n" rel="next">The swank-client/swank-client․lisp file</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file" accesskey="p" rel="prev">The swank-client․asd file</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="swank_002dclient_002fpackage_002elisp"></span><h4 class="subsection">3.1.2 <tt>swank-client/package.lisp</tt></h4>
+<span id="go-to-the-swank_002dclient_002fpackage_2024lisp-file"></span><span id="index-swank_002dclient_002fpackage_002elisp"></span>
+<span id="index-Lisp-File_002c-swank_002dclient_002fpackage_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-swank_002dclient_002fpackage_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient-system"><tt>swank-client</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><tt>package.lisp</tt>
+</p></dd>
+<dt><strong>Packages</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-swank_002dclient_002fswank_002dclient_2024lisp-file"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file" accesskey="p" rel="prev">The swank-client/package․lisp file</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="swank_002dclient_002fswank_002dclient_002elisp"></span><h4 class="subsection">3.1.3 <tt>swank-client/swank-client.lisp</tt></h4>
+<span id="go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"></span><span id="index-swank_002dclient_002fswank_002dclient_002elisp"></span>
+<span id="index-Lisp-File_002c-swank_002dclient_002fswank_002dclient_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-swank_002dclient_002fswank_002dclient_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient-system"><tt>swank-client</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><tt>swank-client.lisp</tt>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCLOSE-function"><tt>slime-close</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCONNECT-function"><tt>slime-connect</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL-function"><tt>slime-eval</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL_002dASYNC-function"><tt>slime-eval-async</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dMIGRATE_002dEVALS-function"><tt>slime-migrate-evals</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNETWORK_002dERROR-condition"><tt>slime-network-error</tt></a> (condition)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dPENDING_002dEVALS_002dP-function"><tt>slime-pending-evals-p</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-class"><tt>swank-connection</tt></a> (class)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236WITH_002dSLIME_002dCONNECTION-macro"><tt>with-slime-connection</tt></a> (macro)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aCONNECTIONS_002dLOCK_002a-special-variable"><tt>*connections-lock*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aIO_002dPACKAGE_002a-special-variable"><tt>*io-package*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aOPEN_002dCONNECTIONS_002a-special-variable"><tt>*open-connections*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aTHREAD_002dOFFSET_002a-special-variable"><tt>*thread-offset*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002bABORT_002b-constant"><tt>+abort+</tt></a> (constant)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002bMAXIMUM_002dTHREAD_002dCOUNT_002b-constant"><tt>+maximum-thread-count+</tt></a> (constant)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236ADD_002dOPEN_002dCONNECTION-function"><tt>add-open-connection</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>connection-lock</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>continuation-counter</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf continuation-counter)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236DESTRUCTURE_002dCASE-macro"><tt>destructure-case</tt></a> (macro)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236FIND_002dCONNECTION_002dFOR_002dTHREAD_002dID-function"><tt>find-connection-for-thread-id</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236FORWARD_002dEVENT_002dTO_002dWORKER-function"><tt>forward-event-to-worker</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>host-name</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>port</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-type"><tt>port</tt></a> (type)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REMOVE_002dOPEN_002dCONNECTION-function"><tt>remove-open-connection</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>rex-continuations</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf rex-continuations)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SEND_002dTO_002dEMACS-function"><tt>send-to-emacs</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SERVER_002dTHREAD_002dID-function"><tt>server-thread-id</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENT-function"><tt>slime-dispatch-event</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENTS-function"><tt>slime-dispatch-events</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dCONNECT-function"><tt>slime-net-connect</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dENCODE_002dLENGTH-function"><tt>slime-net-encode-length</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dREAD-function"><tt>slime-net-read</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dSEND-function"><tt>slime-net-send</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dREX-macro"><tt>slime-rex</tt></a> (macro)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSECRET-function"><tt>slime-secret</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSEND-function"><tt>slime-send</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SOCKET_002dKEEP_002dALIVE-function"><tt>socket-keep-alive</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236STATE-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>state</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf state)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>thread-offset</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>usocket</tt></a> (method)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Packages"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="n" rel="next">Definitions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Packages-1"></span><h2 class="chapter">4 Packages</h2>
+<p>Packages are listed by definition order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-package" accesskey="1">The swank-client package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+
+<hr>
+<span id="The-swank_002dclient-package"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="swank_002dclient-1"></span><h3 class="section">4.1 <tt>swank-client</tt></h3>
+<span id="go-to-the-SWANK_002dCLIENT-package"></span><span id="index-swank_002dclient-1"></span>
+<span id="index-Package_002c-swank_002dclient"></span>
+<p>A client interface to Swank servers.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Use List</strong></dt>
+<dd><ul>
+<li> <tt>com.google.base</tt>
+</li><li> <tt>common-lisp</tt>
+</li></ul>
+</dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCLOSE-function"><tt>slime-close</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCONNECT-function"><tt>slime-connect</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL-function"><tt>slime-eval</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL_002dASYNC-function"><tt>slime-eval-async</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dMIGRATE_002dEVALS-function"><tt>slime-migrate-evals</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNETWORK_002dERROR-condition"><tt>slime-network-error</tt></a> (condition)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dPENDING_002dEVALS_002dP-function"><tt>slime-pending-evals-p</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-class"><tt>swank-connection</tt></a> (class)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236WITH_002dSLIME_002dCONNECTION-macro"><tt>with-slime-connection</tt></a> (macro)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aCONNECTIONS_002dLOCK_002a-special-variable"><tt>*connections-lock*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aIO_002dPACKAGE_002a-special-variable"><tt>*io-package*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aOPEN_002dCONNECTIONS_002a-special-variable"><tt>*open-connections*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002aTHREAD_002dOFFSET_002a-special-variable"><tt>*thread-offset*</tt></a> (special variable)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002bABORT_002b-constant"><tt>+abort+</tt></a> (constant)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_002bMAXIMUM_002dTHREAD_002dCOUNT_002b-constant"><tt>+maximum-thread-count+</tt></a> (constant)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236ADD_002dOPEN_002dCONNECTION-function"><tt>add-open-connection</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-generic-function"><tt>connection-lock</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>connection-lock</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-generic-function"><tt>continuation-counter</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>continuation-counter</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf continuation-counter)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-generic-function"><tt>(setf continuation-counter)</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236DESTRUCTURE_002dCASE-macro"><tt>destructure-case</tt></a> (macro)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236FIND_002dCONNECTION_002dFOR_002dTHREAD_002dID-function"><tt>find-connection-for-thread-id</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236FORWARD_002dEVENT_002dTO_002dWORKER-function"><tt>forward-event-to-worker</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-generic-function"><tt>host-name</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>host-name</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-generic-function"><tt>port</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>port</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-type"><tt>port</tt></a> (type)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REMOVE_002dOPEN_002dCONNECTION-function"><tt>remove-open-connection</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-generic-function"><tt>rex-continuations</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>rex-continuations</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf rex-continuations)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-generic-function"><tt>(setf rex-continuations)</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SEND_002dTO_002dEMACS-function"><tt>send-to-emacs</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SERVER_002dTHREAD_002dID-function"><tt>server-thread-id</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENT-function"><tt>slime-dispatch-event</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENTS-function"><tt>slime-dispatch-events</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dCONNECT-function"><tt>slime-net-connect</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dENCODE_002dLENGTH-function"><tt>slime-net-encode-length</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dREAD-function"><tt>slime-net-read</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dSEND-function"><tt>slime-net-send</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dREX-macro"><tt>slime-rex</tt></a> (macro)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSECRET-function"><tt>slime-secret</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSEND-function"><tt>slime-send</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236SOCKET_002dKEEP_002dALIVE-function"><tt>socket-keep-alive</tt></a> (function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236STATE-generic-function"><tt>state</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236STATE-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>state</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>(setf state)</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-generic-function"><tt>(setf state)</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-generic-function"><tt>thread-offset</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>thread-offset</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-generic-function"><tt>usocket</tt></a> (generic function)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>usocket</tt></a> (method)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Definitions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="n" rel="next">Indexes</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Definitions-1"></span><h2 class="chapter">5 Definitions</h2>
+<p>Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="1">Exported definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="2">Internal definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+
+<hr>
+<span id="Exported-definitions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="n" rel="next">Internal definitions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Exported-definitions-1"></span><h3 class="section">5.1 Exported definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Exported-macros" accesskey="1">Exported macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions" accesskey="2">Exported functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions" accesskey="3">Exported conditions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes" accesskey="4">Exported classes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+<hr>
+<span id="Exported-macros"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions" accesskey="n" rel="next">Exported functions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Macros"></span><h4 class="subsection">5.1.1 Macros</h4>
+<dl>
+<dt id="index-with_002dslime_002dconnection">Macro: <strong>with-slime-connection</strong> <em>(VARIABLE HOST-NAME PORT &amp;optional CONNECTION-CLOSED-HOOK) &amp;body BODY</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236WITH_002dSLIME_002dCONNECTION-macro"></span><span id="index-Macro_002c-with_002dslime_002dconnection"></span>
+<p>Wraps BODY in a LET form where VARIABLE is bound to the value returned by
+(SLIME-CONNECT HOST-NAME PORT CONNECTION-CLOSED-HOOK).  Arranges for the Swank
+connection to be closed when control exits BODY.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Exported-functions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions" accesskey="n" rel="next">Exported conditions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-macros" accesskey="p" rel="prev">Exported macros</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions"></span><h4 class="subsection">5.1.2 Functions</h4>
+<dl>
+<dt id="index-slime_002dclose">Function: <strong>slime-close</strong> <em>CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCLOSE-function"></span><span id="index-Function_002c-slime_002dclose"></span>
+<p>Closes CONNECTION to a Swank server.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dconnect">Function: <strong>slime-connect</strong> <em>HOST-NAME PORT &amp;optional CONNECTION-CLOSED-HOOK</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dCONNECT-function"></span><span id="index-Function_002c-slime_002dconnect"></span>
+<p>Connects to the Swank server running on HOST-NAME that is listening on PORT.
+Returns a SWANK-CONNECTION if the connection attempt is successful.  Otherwise,
+returns NIL.  May signal SLIME-NETWORK-ERROR if the user has a Slime secret file
+and there are network problems sending its contents to the remote Swank server.
+If provided, function CONNECTION-CLOSED-HOOK is called when the connection is
+closed.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002deval">Function: <strong>slime-eval</strong> <em>SEXP CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL-function"></span><span id="index-Function_002c-slime_002deval"></span>
+<p>Sends SEXP over CONNECTION to a Swank server for evaluation and waits for the
+result.  When the result is received, it is returned.  Signals
+SLIME-NETWORK-ERROR when there are network problems sending SEXP.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002deval_002dasync">Function: <strong>slime-eval-async</strong> <em>SEXP CONNECTION &amp;optional CONTINUATION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dEVAL_002dASYNC-function"></span><span id="index-Function_002c-slime_002deval_002dasync"></span>
+<p>Sends SEXP over CONNECTION to a Swank server for evaluation, then immediately
+returns.  Some time later, after the evaluation is finished, CONTINUATION is
+called with the result as argument.  Signals SLIME-NETWORK-ERROR when there are
+network problems sending SEXP.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dmigrate_002devals">Function: <strong>slime-migrate-evals</strong> <em>OLD-CONNECTION NEW-CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dMIGRATE_002dEVALS-function"></span><span id="index-Function_002c-slime_002dmigrate_002devals"></span>
+<p>Evaluates on NEW-CONNECTION all the work pending on a closed OLD-CONNECTION.
+Signals SLIME-NETWORK-ERROR when there are network problems.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dpending_002devals_002dp">Function: <strong>slime-pending-evals-p</strong> <em>CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dPENDING_002dEVALS_002dP-function"></span><span id="index-Function_002c-slime_002dpending_002devals_002dp"></span>
+<p>Returns T if there are outstanding evaluations pending on CONNECTION;
+otherwise, returns NIL.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Exported-conditions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes" accesskey="n" rel="next">Exported classes</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions" accesskey="p" rel="prev">Exported functions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Conditions"></span><h4 class="subsection">5.1.3 Conditions</h4>
+<dl>
+<dt id="index-slime_002dnetwork_002derror">Condition: <strong>slime-network-error</strong> <em>()</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNETWORK_002dERROR-condition"></span><span id="index-Condition_002c-slime_002dnetwork_002derror"></span>
+<p>Network problem while evaluating a form.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Direct superclasses</strong></dt>
+<dd><p><tt>error</tt> (condition)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Exported-classes"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions" accesskey="p" rel="prev">Exported conditions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Classes"></span><h4 class="subsection">5.1.4 Classes</h4>
+<dl>
+<dt id="index-swank_002dconnection">Class: <strong>swank-connection</strong> <em>()</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-class"></span><span id="index-Class_002c-swank_002dconnection"></span>
+<p>A connection to a Swank server.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Direct superclasses</strong></dt>
+<dd><p><tt>standard-object</tt> (class)
+</p></dd>
+<dt><strong>Direct methods</strong></dt>
+<dd><ul>
+<li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>connection-lock</tt></a> (method)
+</li><li> <tt>state</tt> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236STATE-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>state</tt></a> (method)
+</li><li> <tt>rex-continuations</tt> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>rex-continuations</tt></a> (method)
+</li><li> <tt>continuation-counter</tt> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>continuation-counter</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>thread-offset</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>usocket</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>port</tt></a> (method)
+</li><li> <a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"><tt>host-name</tt></a> (method)
+</li></ul>
+</dd>
+<dt><strong>Direct slots</strong></dt>
+<dd><dl>
+<dt id="index-host_002dname-2">Slot: <strong>host-name</strong></dt>
+<dd><span id="index-Slot_002c-host_002dname"></span>
+<p>Name of the host where the Swank server is running.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>string</tt>
+</p></dd>
+<dt><strong>Initargs</strong></dt>
+<dd><p><tt>:host-name</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-generic-function"><tt>host-name</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-port-3">Slot: <strong>port</strong></dt>
+<dd><span id="index-Slot_002c-port"></span>
+<p>Port number used to make a Swank server connection.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>swank-client::port</tt>
+</p></dd>
+<dt><strong>Initargs</strong></dt>
+<dd><p><tt>:port</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236PORT-generic-function"><tt>port</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-usocket-2">Slot: <strong>usocket</strong></dt>
+<dd><span id="index-Slot_002c-usocket"></span>
+<p>USOCKET used to communicate with the Swank server.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>usocket:stream-usocket</tt>
+</p></dd>
+<dt><strong>Initargs</strong></dt>
+<dd><p><tt>:usocket</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-generic-function"><tt>usocket</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-thread_002doffset-2">Slot: <strong>thread-offset</strong></dt>
+<dd><span id="index-Slot_002c-thread_002doffset"></span>
+<p>All threads for this connection are presented to Emacs with this value added to
+their thread ID.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>(integer 0 *)</tt>
+</p></dd>
+<dt><strong>Initform</strong></dt>
+<dd><p><tt>(incf swank-client::*thread-offset* swank-client::+maximum-thread-count+)</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-generic-function"><tt>thread-offset</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-continuation_002dcounter-2">Slot: <strong>continuation-counter</strong></dt>
+<dd><span id="index-Slot_002c-continuation_002dcounter"></span>
+<p>Used to associate an ID with each evaluated form.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>(integer 0 *)</tt>
+</p></dd>
+<dt><strong>Initform</strong></dt>
+<dd><p><tt>0</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-generic-function"><tt>continuation-counter</tt></a> (generic function)
+</p></dd>
+<dt><strong>Writers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-generic-function"><tt>(setf continuation-counter)</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-rex_002dcontinuations-2">Slot: <strong>rex-continuations</strong></dt>
+<dd><span id="index-Slot_002c-rex_002dcontinuations"></span>
+<p>List of (ID, continuation) pairs, one for each evaluation in progress. Used to
+match each returned value with the continuation it should be passed to.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>list</tt>
+</p></dd>
+<dt><strong>Initform</strong></dt>
+<dd><p><tt>(quote nil)</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-generic-function"><tt>rex-continuations</tt></a> (generic function)
+</p></dd>
+<dt><strong>Writers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-generic-function"><tt>(setf rex-continuations)</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-state-2">Slot: <strong>state</strong></dt>
+<dd><span id="index-Slot_002c-state"></span>
+<p>State of the connection, either :ALIVE, :CLOSING, or :DEAD.
+</p><dl compact="compact">
+<dt><strong>Type</strong></dt>
+<dd><p><tt>(member :alive :closing :dead)</tt>
+</p></dd>
+<dt><strong>Initform</strong></dt>
+<dd><p><tt>:alive</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236STATE-generic-function"><tt>state</tt></a> (generic function)
+</p></dd>
+<dt><strong>Writers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-generic-function"><tt>(setf state)</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-connection_002dlock-2">Slot: <strong>connection-lock</strong></dt>
+<dd><span id="index-Slot_002c-connection_002dlock"></span>
+<p>Lock protecting slots of this connection that are read and written by
+concurrently running threads.
+</p><dl compact="compact">
+<dt><strong>Initform</strong></dt>
+<dd><p><tt>(bordeaux-threads:make-lock)</tt>
+</p></dd>
+<dt><strong>Readers</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-generic-function"><tt>connection-lock</tt></a> (generic function)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+
+
+<hr>
+<span id="Internal-definitions"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Internal-definitions-1"></span><h3 class="section">5.2 Internal definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants" accesskey="1">Internal constants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables" accesskey="2">Internal special variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros" accesskey="3">Internal macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions" accesskey="4">Internal functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions" accesskey="5">Internal generic functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Internal-types" accesskey="6">Internal types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+<hr>
+<span id="Internal-constants"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables" accesskey="n" rel="next">Internal special variables</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="p" rel="prev">Internal definitions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Constants"></span><h4 class="subsection">5.2.1 Constants</h4>
+<dl>
+<dt id="index-_002babort_002b">Constant: <strong>+abort+</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002bABORT_002b-constant"></span><span id="index-Constant_002c-_002babort_002b"></span>
+<p>Unique object used to signal that a computation was aborted on the server.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-_002bmaximum_002dthread_002dcount_002b">Constant: <strong>+maximum-thread-count+</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002bMAXIMUM_002dTHREAD_002dCOUNT_002b-constant"></span><span id="index-Constant_002c-_002bmaximum_002dthread_002dcount_002b"></span>
+<p>Maximum number of threads per Swank connection.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-special-variables"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros" accesskey="n" rel="next">Internal macros</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants" accesskey="p" rel="prev">Internal constants</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Special-variables"></span><h4 class="subsection">5.2.2 Special variables</h4>
+<dl>
+<dt id="index-_002aconnections_002dlock_002a">Special Variable: <strong>*connections-lock*</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002aCONNECTIONS_002dLOCK_002a-special-variable"></span><span id="index-Special-Variable_002c-_002aconnections_002dlock_002a"></span>
+<p>Lock protecting *OPEN-CONNECTIONS*.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-_002aio_002dpackage_002a">Special Variable: <strong>*io-package*</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002aIO_002dPACKAGE_002a-special-variable"></span><span id="index-Special-Variable_002c-_002aio_002dpackage_002a"></span>
+<p>A package used by the Swank client code when printing s-expressions, so that
+symbols in the printed output contain their package names.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-_002aopen_002dconnections_002a">Special Variable: <strong>*open-connections*</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002aOPEN_002dCONNECTIONS_002a-special-variable"></span><span id="index-Special-Variable_002c-_002aopen_002dconnections_002a"></span>
+<p>List of all open Swank connections.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-_002athread_002doffset_002a">Special Variable: <strong>*thread-offset*</strong></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_002aTHREAD_002dOFFSET_002a-special-variable"></span><span id="index-Special-Variable_002c-_002athread_002doffset_002a"></span>
+<p>Counter used to assign each Swank connection a unique range of thread IDs.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-macros"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions" accesskey="n" rel="next">Internal functions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables" accesskey="p" rel="prev">Internal special variables</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Macros-1"></span><h4 class="subsection">5.2.3 Macros</h4>
+<dl>
+<dt id="index-destructure_002dcase">Macro: <strong>destructure-case</strong> <em>VALUE &amp;body PATTERNS</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236DESTRUCTURE_002dCASE-macro"></span><span id="index-Macro_002c-destructure_002dcase"></span>
+<p>Dispatches VALUE to one of PATTERNS.  A cross between CASE and DESTRUCTURING-BIND.
+The pattern syntax is: ((HEAD . ARGS) . BODY).  The list of patterns is searched
+for a HEAD that’s EQ to the car of VALUE.  If one is found, BODY is executed
+with ARGS bound to the corresponding values in the CDR of VALUE.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002drex">Macro: <strong>slime-rex</strong> <em>(&amp;rest SAVED-VARS) (SEXP CONNECTION) &amp;body CONTINUATIONS</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dREX-macro"></span><span id="index-Macro_002c-slime_002drex"></span>
+<p>(slime-rex (VAR ...) (SEXP CONNECTION) CLAUSES ...)<br>
+</p>
+<p>Remote EXecute SEXP.<br>
+</p>
+<p>VARs are a list of saved variables visible in the other forms.  Each VAR is
+either a symbol or a list (VAR INIT-VALUE).<br>
+</p>
+<p>SEXP is evaluated and the PRINCed version is sent over CONNECTION to a remote
+Lisp.<br>
+</p>
+<p>CLAUSES is a list of patterns with same syntax as ‘destructure-case’.  The
+result of the evaluation of SEXP is dispatched on CLAUSES.  The result is either
+a sexp of the form (:ok VALUE) or (:abort CONDITION).  CLAUSES is executed
+asynchronously.<br>
+</p>
+<p>Signals SLIME-NETWORK-ERROR when there are network problems sending SEXP.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-functions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions" accesskey="n" rel="next">Internal generic functions</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros" accesskey="p" rel="prev">Internal macros</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-1"></span><h4 class="subsection">5.2.4 Functions</h4>
+<dl>
+<dt id="index-add_002dopen_002dconnection">Function: <strong>add-open-connection</strong> <em>CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236ADD_002dOPEN_002dCONNECTION-function"></span><span id="index-Function_002c-add_002dopen_002dconnection"></span>
+<p>Adds CONNECTION to the set of open Swank connections.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-find_002dconnection_002dfor_002dthread_002did">Function: <strong>find-connection-for-thread-id</strong> <em>THREAD-ID</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236FIND_002dCONNECTION_002dFOR_002dTHREAD_002dID-function"></span><span id="index-Function_002c-find_002dconnection_002dfor_002dthread_002did"></span>
+<p>Returns the open Swank connection associated with THREAD-ID.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-forward_002devent_002dto_002dworker">Function: <strong>forward-event-to-worker</strong> <em>FORM PACKAGE THREAD-ID ID</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236FORWARD_002dEVENT_002dTO_002dWORKER-function"></span><span id="index-Function_002c-forward_002devent_002dto_002dworker"></span>
+<p>Determines whether an :emacs-rex event is intended for a remote worker Lisp
+and if so forwards it.  When forwarding is successful, FORWARD-EVENT-TO-WORKER
+returns T; otherwise, it returns NIL.<br>
+</p>
+<p>FORWARD-EVENT-TO-WORKER is called by code in Swank Crew’s patch to Slime’s
+swank.lisp source file.  The forwarding it performs is used by Swank Crew
+to handle debugging of conditions signalled on remote worker Lisps.  See
+swank.lisp-patch in https://github.com/brown/swank-crew.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-remove_002dopen_002dconnection">Function: <strong>remove-open-connection</strong> <em>CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236REMOVE_002dOPEN_002dCONNECTION-function"></span><span id="index-Function_002c-remove_002dopen_002dconnection"></span>
+<p>Removes CONNECTION from the set of open Swank connections.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-send_002dto_002demacs">Function: <strong>send-to-emacs</strong> <em>EVENT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SEND_002dTO_002dEMACS-function"></span><span id="index-Function_002c-send_002dto_002demacs"></span>
+<p>Sends EVENT to Emacs.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-server_002dthread_002did">Function: <strong>server-thread-id</strong> <em>THREAD-ID</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SERVER_002dTHREAD_002dID-function"></span><span id="index-Function_002c-server_002dthread_002did"></span>
+<p>Maps the THREAD-ID in an event that must be forwarded to the thread ID known
+by the remote Lisp to which it will be sent.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002ddispatch_002devent">Function: <strong>slime-dispatch-event</strong> <em>EVENT CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENT-function"></span><span id="index-Function_002c-slime_002ddispatch_002devent"></span>
+<p>Handles EVENT for a Swank CONNECTION.  Signals SLIME-NETWORK-ERROR if there
+are communications problems.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002ddispatch_002devents">Function: <strong>slime-dispatch-events</strong> <em>CONNECTION CONNECTION-CLOSED-HOOK</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dDISPATCH_002dEVENTS-function"></span><span id="index-Function_002c-slime_002ddispatch_002devents"></span>
+<p>Reads and dispatches incoming events for a CONNECTION to a Swank server.  If
+provided, function CONNECTION-CLOSED-HOOK is called when CONNECTION is closed.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dnet_002dconnect">Function: <strong>slime-net-connect</strong> <em>HOST-NAME PORT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dCONNECT-function"></span><span id="index-Function_002c-slime_002dnet_002dconnect"></span>
+<p>Establishes a connection to the Swank server listening on PORT of HOST-NAME.
+Returns a SWANK-CONNECTION when the connection attempt is successful.
+Otherwise, returns NIL.  May signal SLIME-NETWORK-ERROR if the user has a Slime
+secret file and there are network problems sending its contents to the remote
+Swank server.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dnet_002dencode_002dlength">Function: <strong>slime-net-encode-length</strong> <em>N</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dENCODE_002dLENGTH-function"></span><span id="index-Function_002c-slime_002dnet_002dencode_002dlength"></span>
+<p>Encodes an integer as a 6-character, 24-bit hex string.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dnet_002dread">Function: <strong>slime-net-read</strong> <em>CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dREAD-function"></span><span id="index-Function_002c-slime_002dnet_002dread"></span>
+<p>Reads a Swank message from a network CONNECTION to a Swank server.  Returns
+the Swank event or NIL, if there was a problem reading data.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dnet_002dsend">Function: <strong>slime-net-send</strong> <em>SEXP USOCKET</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dNET_002dSEND-function"></span><span id="index-Function_002c-slime_002dnet_002dsend"></span>
+<p>Sends SEXP to a Swank server over USOCKET.  The s-expression is read and
+evaluated by the remote Lisp.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dsecret">Function: <strong>slime-secret</strong> <em>()</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSECRET-function"></span><span id="index-Function_002c-slime_002dsecret"></span>
+<p>Finds the secret file in the user’s home directory.  Returns NIL if the file
+doesn’t exist; otherwise, returns the first line of the file.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-slime_002dsend">Function: <strong>slime-send</strong> <em>SEXP CONNECTION</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SLIME_002dSEND-function"></span><span id="index-Function_002c-slime_002dsend"></span>
+<p>Sends SEXP to a Swank server using CONNECTION.  Signals SLIME-NETWORK-ERROR
+if there are communications problems.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-socket_002dkeep_002dalive">Function: <strong>socket-keep-alive</strong> <em>SOCKET</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236SOCKET_002dKEEP_002dALIVE-function"></span><span id="index-Function_002c-socket_002dkeep_002dalive"></span>
+<p>Configures TCP keep alive packets for SOCKET.  The socket connection will be
+considered dead if keep alive packets are lost.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-generic-functions"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-types" accesskey="n" rel="next">Internal types</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions" accesskey="p" rel="prev">Internal functions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Generic-functions"></span><h4 class="subsection">5.2.5 Generic functions</h4>
+<dl>
+<dt id="index-connection_002dlock">Generic Function: <strong>connection-lock</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-generic-function"></span><span id="index-Generic-Function_002c-connection_002dlock"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-connection_002dlock-1">Method: <strong>connection-lock</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236CONNECTION_002dLOCK-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-connection_002dlock"></span>
+<p>Lock protecting slots of this connection that are read and written by
+concurrently running threads.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-continuation_002dcounter">Generic Function: <strong>continuation-counter</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-generic-function"></span><span id="index-Generic-Function_002c-continuation_002dcounter"></span>
+</dd><dt id="index-_0028setf-continuation_002dcounter_0029">Generic Function: <strong>(setf continuation-counter)</strong> <em>NEW-VALUE OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-generic-function"></span><span id="index-Generic-Function_002c-_0028setf-continuation_002dcounter_0029"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-continuation_002dcounter-1">Method: <strong>continuation-counter</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236CONTINUATION_002dCOUNTER-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-continuation_002dcounter"></span>
+</dd><dt id="index-_0028setf-continuation_002dcounter_0029-1">Method: <strong>(setf continuation-counter)</strong> <em>NEW-VALUE (SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-CONTINUATION_002dCOUNTER_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-_0028setf-continuation_002dcounter_0029"></span>
+<p>Used to associate an ID with each evaluated form.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-host_002dname">Generic Function: <strong>host-name</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-generic-function"></span><span id="index-Generic-Function_002c-host_002dname"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-host_002dname-1">Method: <strong>host-name</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236HOST_002dNAME-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-host_002dname"></span>
+<p>Name of the host where the Swank server is running.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-port">Generic Function: <strong>port</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236PORT-generic-function"></span><span id="index-Generic-Function_002c-port"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-port-1">Method: <strong>port</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236PORT-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-port"></span>
+<p>Port number used to make a Swank server connection.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-rex_002dcontinuations">Generic Function: <strong>rex-continuations</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-generic-function"></span><span id="index-Generic-Function_002c-rex_002dcontinuations"></span>
+</dd><dt id="index-_0028setf-rex_002dcontinuations_0029">Generic Function: <strong>(setf rex-continuations)</strong> <em>NEW-VALUE OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-generic-function"></span><span id="index-Generic-Function_002c-_0028setf-rex_002dcontinuations_0029"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-rex_002dcontinuations-1">Method: <strong>rex-continuations</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236REX_002dCONTINUATIONS-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-rex_002dcontinuations"></span>
+</dd><dt id="index-_0028setf-rex_002dcontinuations_0029-1">Method: <strong>(setf rex-continuations)</strong> <em>NEW-VALUE (SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-REX_002dCONTINUATIONS_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-_0028setf-rex_002dcontinuations_0029"></span>
+<p>List of (ID, continuation) pairs, one for each evaluation in progress. Used to
+match each returned value with the continuation it should be passed to.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-state">Generic Function: <strong>state</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236STATE-generic-function"></span><span id="index-Generic-Function_002c-state"></span>
+</dd><dt id="index-_0028setf-state_0029">Generic Function: <strong>(setf state)</strong> <em>NEW-VALUE OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-generic-function"></span><span id="index-Generic-Function_002c-_0028setf-state_0029"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-state-1">Method: <strong>state</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236STATE-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-state"></span>
+</dd><dt id="index-_0028setf-state_0029-1">Method: <strong>(setf state)</strong> <em>NEW-VALUE (SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236_2768SETF-STATE_2769-COMMON_002dLISP_2236_2236T-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-_0028setf-state_0029"></span>
+<p>State of the connection, either :ALIVE, :CLOSING, or :DEAD.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-thread_002doffset">Generic Function: <strong>thread-offset</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-generic-function"></span><span id="index-Generic-Function_002c-thread_002doffset"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-thread_002doffset-1">Method: <strong>thread-offset</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236THREAD_002dOFFSET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-thread_002doffset"></span>
+<p>All threads for this connection are presented to Emacs with this value added to
+their thread ID.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-usocket">Generic Function: <strong>usocket</strong> <em>OBJECT</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-generic-function"></span><span id="index-Generic-Function_002c-usocket"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Methods</strong></dt>
+<dd><dl>
+<dt id="index-usocket-1">Method: <strong>usocket</strong> <em>(SWANK-CONNECTION <tt>swank-connection</tt>)</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236USOCKET-SWANK_002dCLIENT_2236_2236SWANK_002dCONNECTION-method"></span><span id="index-Method_002c-usocket"></span>
+<p>USOCKET used to communicate with the Swank server.
+</p><dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+</dd>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Internal-types"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions" accesskey="p" rel="prev">Internal generic functions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Types"></span><h4 class="subsection">5.2.6 Types</h4>
+<dl>
+<dt id="index-port-2">Type: <strong>port</strong> <em>()</em></dt>
+<dd><span id="go-to-the-SWANK_002dCLIENT_2236_2236PORT-type"></span><span id="index-Type_002c-port"></span>
+<p>A non-privileged TCP/IP port number.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-SWANK_002dCLIENT-package"><tt>swank-client</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="https://quickref.common-lisp.net/swank-client.html#go-to-the-swank_002dclient_002fswank_002dclient_2024lisp-file"><tt>swank-client.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+
+<hr>
+<span id="Indexes"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Indexes-1"></span><h2 class="appendix">Appendix A Indexes</h2>
+<table class="menu" border="0" cellspacing="0">
+<tbody><tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Concept-index" rel="index" accesskey="1">Concept index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Function-index" rel="index" accesskey="2">Function index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Variable-index" rel="index" accesskey="3">Variable index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">• <a href="https://quickref.common-lisp.net/swank-client.html#Data-type-index" rel="index" accesskey="4">Data type index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</tbody></table>
+
+
+<hr>
+<span id="Concept-index"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Function-index" accesskey="n" rel="next">Function index</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="p" rel="prev">Indexes</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Concepts"></span><h3 class="appendixsec">A.1 Concepts</h3>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+<table class="index-cp" border="0">
+<tbody><tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-File_002c-Lisp_002c-swank_002dclient_002easd">File, Lisp, <tt>swank-client.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file">The swank-client․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-File_002c-Lisp_002c-swank_002dclient_002fpackage_002elisp">File, Lisp, <tt>swank-client/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file">The swank-client/package․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-File_002c-Lisp_002c-swank_002dclient_002fswank_002dclient_002elisp">File, Lisp, <tt>swank-client/swank-client.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file">The swank-client/swank-client․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Lisp-File_002c-swank_002dclient_002easd">Lisp File, <tt>swank-client.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file">The swank-client․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Lisp-File_002c-swank_002dclient_002fpackage_002elisp">Lisp File, <tt>swank-client/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file">The swank-client/package․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Lisp-File_002c-swank_002dclient_002fswank_002dclient_002elisp">Lisp File, <tt>swank-client/swank-client.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file">The swank-client/swank-client․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dclient_002easd"><tt>swank-client.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_2024asd-file">The swank-client․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dclient_002fpackage_002elisp"><tt>swank-client/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fpackage_2024lisp-file">The swank-client/package․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dclient_002fswank_002dclient_002elisp"><tt>swank-client/swank-client.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient_002fswank_002dclient_2024lisp-file">The swank-client/swank-client․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</tbody></table>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Concept-index_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+
+
+
+<hr>
+<span id="Function-index"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Variable-index" accesskey="n" rel="next">Variable index</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Concept-index" accesskey="p" rel="prev">Concept index</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-2"></span><h3 class="appendixsec">A.2 Functions</h3>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_symbol-1"><b>(</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+<table class="index-fn" border="0">
+<tbody><tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_symbol-1">(</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-continuation_002dcounter_0029"><code>(setf continuation-counter)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-continuation_002dcounter_0029-1"><code>(setf continuation-counter)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-rex_002dcontinuations_0029"><code>(setf rex-continuations)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-rex_002dcontinuations_0029-1"><code>(setf rex-continuations)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-state_0029"><code>(setf state)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_0028setf-state_0029-1"><code>(setf state)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-A">A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-add_002dopen_002dconnection"><code>add-open-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-connection_002dlock"><code>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-connection_002dlock-1"><code>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-continuation_002dcounter"><code>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-continuation_002dcounter-1"><code>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-destructure_002dcase"><code>destructure-case</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros">Internal macros</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-find_002dconnection_002dfor_002dthread_002did"><code>find-connection-for-thread-id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-forward_002devent_002dto_002dworker"><code>forward-event-to-worker</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-add_002dopen_002dconnection"><code><span class="roman">Function, </span>add-open-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-find_002dconnection_002dfor_002dthread_002did"><code><span class="roman">Function, </span>find-connection-for-thread-id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-forward_002devent_002dto_002dworker"><code><span class="roman">Function, </span>forward-event-to-worker</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-remove_002dopen_002dconnection"><code><span class="roman">Function, </span>remove-open-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-send_002dto_002demacs"><code><span class="roman">Function, </span>send-to-emacs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-server_002dthread_002did"><code><span class="roman">Function, </span>server-thread-id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dclose"><code><span class="roman">Function, </span>slime-close</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dconnect"><code><span class="roman">Function, </span>slime-connect</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002ddispatch_002devent"><code><span class="roman">Function, </span>slime-dispatch-event</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002ddispatch_002devents"><code><span class="roman">Function, </span>slime-dispatch-events</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002deval"><code><span class="roman">Function, </span>slime-eval</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002deval_002dasync"><code><span class="roman">Function, </span>slime-eval-async</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dmigrate_002devals"><code><span class="roman">Function, </span>slime-migrate-evals</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dnet_002dconnect"><code><span class="roman">Function, </span>slime-net-connect</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dnet_002dencode_002dlength"><code><span class="roman">Function, </span>slime-net-encode-length</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dnet_002dread"><code><span class="roman">Function, </span>slime-net-read</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dnet_002dsend"><code><span class="roman">Function, </span>slime-net-send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dpending_002devals_002dp"><code><span class="roman">Function, </span>slime-pending-evals-p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dsecret"><code><span class="roman">Function, </span>slime-secret</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-slime_002dsend"><code><span class="roman">Function, </span>slime-send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Function_002c-socket_002dkeep_002dalive"><code><span class="roman">Function, </span>socket-keep-alive</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-G">G</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-_0028setf-continuation_002dcounter_0029"><code><span class="roman">Generic Function, </span>(setf continuation-counter)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-_0028setf-rex_002dcontinuations_0029"><code><span class="roman">Generic Function, </span>(setf rex-continuations)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-_0028setf-state_0029"><code><span class="roman">Generic Function, </span>(setf state)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-connection_002dlock"><code><span class="roman">Generic Function, </span>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-continuation_002dcounter"><code><span class="roman">Generic Function, </span>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-host_002dname"><code><span class="roman">Generic Function, </span>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-port"><code><span class="roman">Generic Function, </span>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-rex_002dcontinuations"><code><span class="roman">Generic Function, </span>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-state"><code><span class="roman">Generic Function, </span>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-thread_002doffset"><code><span class="roman">Generic Function, </span>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Generic-Function_002c-usocket"><code><span class="roman">Generic Function, </span>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-H">H</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-host_002dname"><code>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-host_002dname-1"><code>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-M">M</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Macro_002c-destructure_002dcase"><code><span class="roman">Macro, </span>destructure-case</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros">Internal macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Macro_002c-slime_002drex"><code><span class="roman">Macro, </span>slime-rex</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros">Internal macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Macro_002c-with_002dslime_002dconnection"><code><span class="roman">Macro, </span>with-slime-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-macros">Exported macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-_0028setf-continuation_002dcounter_0029"><code><span class="roman">Method, </span>(setf continuation-counter)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-_0028setf-rex_002dcontinuations_0029"><code><span class="roman">Method, </span>(setf rex-continuations)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-_0028setf-state_0029"><code><span class="roman">Method, </span>(setf state)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-connection_002dlock"><code><span class="roman">Method, </span>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-continuation_002dcounter"><code><span class="roman">Method, </span>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-host_002dname"><code><span class="roman">Method, </span>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-port"><code><span class="roman">Method, </span>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-rex_002dcontinuations"><code><span class="roman">Method, </span>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-state"><code><span class="roman">Method, </span>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-thread_002doffset"><code><span class="roman">Method, </span>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Method_002c-usocket"><code><span class="roman">Method, </span>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-port"><code>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-port-1"><code>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-remove_002dopen_002dconnection"><code>remove-open-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-rex_002dcontinuations"><code>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-rex_002dcontinuations-1"><code>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-send_002dto_002demacs"><code>send-to-emacs</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-server_002dthread_002did"><code>server-thread-id</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dclose"><code>slime-close</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dconnect"><code>slime-connect</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002ddispatch_002devent"><code>slime-dispatch-event</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002ddispatch_002devents"><code>slime-dispatch-events</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002deval"><code>slime-eval</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002deval_002dasync"><code>slime-eval-async</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dmigrate_002devals"><code>slime-migrate-evals</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dnet_002dconnect"><code>slime-net-connect</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dnet_002dencode_002dlength"><code>slime-net-encode-length</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dnet_002dread"><code>slime-net-read</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dnet_002dsend"><code>slime-net-send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dpending_002devals_002dp"><code>slime-pending-evals-p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002drex"><code>slime-rex</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-macros">Internal macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dsecret"><code>slime-secret</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dsend"><code>slime-send</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-socket_002dkeep_002dalive"><code>socket-keep-alive</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-state"><code>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-state-1"><code>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-thread_002doffset"><code>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-thread_002doffset-1"><code>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-U">U</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-usocket"><code>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-usocket-1"><code>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-generic-functions">Internal generic functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-W">W</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-with_002dslime_002dconnection"><code>with-slime-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-macros">Exported macros</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</tbody></table>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_symbol-1"><b>(</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Function-index_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+
+
+
+<hr>
+<span id="Variable-index"></span><div class="header">
+<p>
+Next: <a href="https://quickref.common-lisp.net/swank-client.html#Data-type-index" accesskey="n" rel="next">Data type index</a>, Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Function-index" accesskey="p" rel="prev">Function index</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Variables"></span><h3 class="appendixsec">A.3 Variables</h3>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_symbol-1"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_symbol-2"><b>+</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-U"><b>U</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+<table class="index-vr" border="0">
+<tbody><tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_symbol-1">*</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002aconnections_002dlock_002a"><code>*connections-lock*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002aio_002dpackage_002a"><code>*io-package*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002aopen_002dconnections_002a"><code>*open-connections*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002athread_002doffset_002a"><code>*thread-offset*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_symbol-2">+</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002babort_002b"><code>+abort+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants">Internal constants</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-_002bmaximum_002dthread_002dcount_002b"><code>+maximum-thread-count+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants">Internal constants</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-connection_002dlock-2"><code>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Constant_002c-_002babort_002b"><code><span class="roman">Constant, </span>+abort+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants">Internal constants</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Constant_002c-_002bmaximum_002dthread_002dcount_002b"><code><span class="roman">Constant, </span>+maximum-thread-count+</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-constants">Internal constants</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-continuation_002dcounter-2"><code>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-H">H</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-host_002dname-2"><code>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-port-3"><code>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-rex_002dcontinuations-2"><code>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-connection_002dlock"><code><span class="roman">Slot, </span>connection-lock</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-continuation_002dcounter"><code><span class="roman">Slot, </span>continuation-counter</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-host_002dname"><code><span class="roman">Slot, </span>host-name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-port"><code><span class="roman">Slot, </span>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-rex_002dcontinuations"><code><span class="roman">Slot, </span>rex-continuations</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-state"><code><span class="roman">Slot, </span>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-thread_002doffset"><code><span class="roman">Slot, </span>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Slot_002c-usocket"><code><span class="roman">Slot, </span>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Special-Variable_002c-_002aconnections_002dlock_002a"><code><span class="roman">Special Variable, </span>*connections-lock*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Special-Variable_002c-_002aio_002dpackage_002a"><code><span class="roman">Special Variable, </span>*io-package*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Special-Variable_002c-_002aopen_002dconnections_002a"><code><span class="roman">Special Variable, </span>*open-connections*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Special-Variable_002c-_002athread_002doffset_002a"><code><span class="roman">Special Variable, </span>*thread-offset*</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-special-variables">Internal special variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-state-2"><code>state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-thread_002doffset-2"><code>thread-offset</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Variable-index_vr_letter-U">U</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-usocket-2"><code>usocket</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</tbody></table>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_symbol-1"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_symbol-2"><b>+</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Variable-index_vr_letter-U"><b>U</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+
+
+
+<hr>
+<span id="Data-type-index"></span><div class="header">
+<p>
+Previous: <a href="https://quickref.common-lisp.net/swank-client.html#Variable-index" accesskey="p" rel="prev">Variable index</a>, Up: <a href="https://quickref.common-lisp.net/swank-client.html#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="https://quickref.common-lisp.net/swank-client.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="https://quickref.common-lisp.net/swank-client.html#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Data-types"></span><h3 class="appendixsec">A.4 Data types</h3>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+<table class="index-tp" border="0">
+<tbody><tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Class_002c-swank_002dconnection"><code><span class="roman">Class, </span>swank-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Condition_002c-slime_002dnetwork_002derror"><code><span class="roman">Condition, </span>slime-network-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions">Exported conditions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Package_002c-swank_002dclient"><code><span class="roman">Package, </span>swank-client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-package">The swank-client package</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-port-2"><code>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-types">Internal types</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-slime_002dnetwork_002derror"><code>slime-network-error</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-conditions">Exported conditions</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dclient"><code>swank-client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-system">The swank-client system</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dclient-1"><code>swank-client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-package">The swank-client package</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-swank_002dconnection"><code>swank-connection</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Exported-classes">Exported classes</a></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-System_002c-swank_002dclient"><code><span class="roman">System, </span>swank-client</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#The-swank_002dclient-system">The swank-client system</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#index-Type_002c-port"><code><span class="roman">Type, </span>port</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="https://quickref.common-lisp.net/swank-client.html#Internal-types">Internal types</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</tbody></table>
+<table><tbody><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="https://quickref.common-lisp.net/swank-client.html#Data-type-index_tp_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></tbody></table>
+
+<hr>
+
+
+
+
+
+</body></html>
