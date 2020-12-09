@@ -1,3 +1,0 @@
-#!/bin/bash
-
-clj --main cljs.main --compile wilfred.core --repl
