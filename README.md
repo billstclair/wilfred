@@ -21,12 +21,14 @@ My local copy of [The swank-client Reference Manual](https://quickref.common-lis
 
 Once:
 
-* Install Leiningen (and Clojure): https://leiningen.org
+Install Leiningen (and Clojure): https://leiningen.org
 
 To start a coding session:
 
+```
 $ cd .../wilfred
 $ bin/run
+```
 
 To build for deployment:
 
