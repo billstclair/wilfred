@@ -16,7 +16,8 @@
               [{:id "dev"
                 :source-paths ["src/cljs"]
                 :figwheel {:on-jsload "wilfred.core/on-js-reload"
-                           :open-urls ["http://localhost:3449/index.html"]}
+                           ;; :open-urls ["http://localhost:3449/index.html"]
+                           }
 
                 :compiler {:main wilfred.core
                            :asset-path "js/compiled/out"
