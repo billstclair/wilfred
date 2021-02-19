@@ -1,7 +1,5 @@
 # elm-package generated files
 .cpcache
-.rebel_readline_history
-figwheel_server.log
-resources/public/js/
 swank-client/
-target/
+out/
+old/

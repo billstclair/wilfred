@@ -1,0 +1,7 @@
+{:deps
+ {org.clojure/clojurescript {:mvn/version "1.10.758"}
+  cljsjs/react-dom {:mvn/version "16.2.0-3"}
+  cljsjs/codemirror {:mvn/version "5.44.0-1"}
+  reagent {:mvn/version "1.0.0"}
+  }
+ }
